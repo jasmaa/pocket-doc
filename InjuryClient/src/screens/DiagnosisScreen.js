@@ -16,6 +16,7 @@ export default class DiagnosisScreen extends React.PureComponent {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                iam_apikey:"<put your key here>",
                 img: this.props.navigation.getParam('img'),
             }),
         });
