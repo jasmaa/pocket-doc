@@ -42,20 +42,9 @@ export default class CameraScreen extends React.PureComponent {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
 
-            // Get response from server
-            const response = await fetch('https://postman-echo.com/post', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    img: data.base64,
-                }),
+            this.props.navigation.navigate("Diagnosis", {
+                img: data.base64,
             });
-
-            // Pass response on here
-            console.log(response);
         }
     };
 }

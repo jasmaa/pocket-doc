@@ -3,7 +3,7 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { CameraScreen, TestScreen } from "./src/screens"
+import { CameraScreen, TestScreen, DiagnosisScreen } from "./src/screens"
 
 const AppNavigator = createStackNavigator(
   {
@@ -12,10 +12,13 @@ const AppNavigator = createStackNavigator(
     },
     Test: {
       screen: TestScreen,
-    }
+    },
+    Diagnosis: {
+      screen: DiagnosisScreen,
+    },
   },
   {
-    initialRouteName: "Test",
+    initialRouteName: "Camera",
   }
 );
 
