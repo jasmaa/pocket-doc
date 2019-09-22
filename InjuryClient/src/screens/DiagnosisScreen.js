@@ -1,34 +1,40 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+const axios = require('axios');
+
 export default class DiagnosisScreen extends React.PureComponent {
 
-    componentDidMount(){
-        this.setup();
+    constructor(props) {
+        super(props);
+        this.state = {};
     }
 
-    async setup(){
+    componentDidMount() {
+        this.queryServer();
+    }
+
+    async queryServer() {
         // Get response from server
-        const response = await fetch('https://postman-echo.com/post', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                iam_apikey:"<put your key here>",
-                img: this.props.navigation.getParam('img'),
-            }),
+        let response = await axios.post('<put endpoint here>', {
+            iam_apikey: "<put key here>",
+            img: this.props.navigation.getParam('img'),
         });
 
-        // Pass response on here
-        console.log(response);
+        this.setState({ result: response.data });
     }
 
-    render(){
+    render() {
+
+        const displayResult = this.state.result
+                            ? this.state.result["images"][0]["classifiers"][0]["classes"].length > 0
+                                ? this.state.result["images"][0]["classifiers"][0]["classes"][0]["class"]
+                                : "No problem"
+                            : "Pending...";
+
         return (
             <View>
-                <Text>{"Diagnosis here"}</Text>
+                <Text>{displayResult}</Text>
             </View>
         );
     }
