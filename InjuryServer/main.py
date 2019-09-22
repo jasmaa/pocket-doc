@@ -28,7 +28,7 @@ def getInjuryFromML():
     with open('./uploaded_file.png', 'rb') as images_file:
         classes = visual_recognition.classify(
             images_file,
-            threshold='0.8',
+            threshold='0.',
             classifier_ids='InjuryClassifier_1389110742',
         ).get_result()
         
