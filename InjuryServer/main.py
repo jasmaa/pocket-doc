@@ -6,6 +6,10 @@ from watson_developer_cloud import VisualRecognitionV3
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return "hello world"
+
 @app.route('/getInjuryType', methods=['POST'])
 def getInjuryFromML():
 
@@ -32,5 +36,5 @@ def getInjuryFromML():
     return json.dumps(classes, indent=2)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=8080)
 
