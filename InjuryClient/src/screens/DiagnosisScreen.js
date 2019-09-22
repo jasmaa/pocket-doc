@@ -38,7 +38,7 @@ export default class DiagnosisScreen extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.endpoint = '<put entrypoint here>';
+        this.endpoint = '<put endpoint here>';
         this.apiKey = '<put api key here>';
 
         this.state = {};
