@@ -1,3 +1,3 @@
-# Injury Image Diagnosis
+# Pocket Doc
 
-An app for diagnosing injuries based on images
+An app for identifying injuries based on images
